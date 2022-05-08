@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/heroku?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password:
+    driverClassName: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   sql:
     init:
       mode: always
@@ -12,7 +12,7 @@ spring:
     # For MySQL 8
     #database-platform: org.hibernate.dialect.MySQL8Dialect
     #For MySQL 5
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
     open-in-view: false
