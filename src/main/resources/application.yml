@@ -1,21 +1,19 @@
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/heroku?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password:
+    driverClassName: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
   sql:
     init:
       mode: always
   jpa:
-    # Choose either MySQL 8 or MySQL 5 below
-    # For MySQL 8
-    #database-platform: org.hibernate.dialect.MySQL8Dialect
-    #For MySQL 5
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
     open-in-view: false
     properties:
       hibernate:
         format_sql: true
+
+server.port: ${PORT:8080}
